@@ -12,7 +12,6 @@ import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
 import lk.D24_Hostel.hostelSystem.view.tdm.StudentTM;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ManageStudentFormController {
@@ -51,6 +50,15 @@ public class ManageStudentFormController {
         }
     }
 
+    public void clearFields(){
+        txtStId.setText(null);
+        txtStName.setText(null);
+        txtStAdd.setText(null);
+        txtConNo.setText(null);
+        txtDob.setText(null);
+        txtGender.setText(null);
+    }
+
     public void btnSaveOnAction(ActionEvent actionEvent) {
         String id = txtStId.getText();
         String name = txtStName.getText();
@@ -62,6 +70,7 @@ public class ManageStudentFormController {
         try {
             if(studentBO.save(new StudentDTO(id,name,address,contact_no, LocalDate.parse(dob),gender))){
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
+                clearFields();
             }
         } catch (Exception e) {
             System.out.println(e);
