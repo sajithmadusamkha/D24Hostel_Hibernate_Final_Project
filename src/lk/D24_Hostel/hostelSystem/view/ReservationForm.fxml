@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="639.0" prefWidth="697.0" style="-fx-background-color: #393e49;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.D24_Hostel.hostelSystem.controller.ReservationFormController">
+   <children>
+      <Label layoutX="31.0" layoutY="11.0" text="Reservation" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="49.0" text="Reserve room | Delete reserve" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="13.0" />
+         </font>
+      </Label>
+      <Separator layoutX="32.0" layoutY="86.0" prefHeight="0.0" prefWidth="634.0" />
+      <ComboBox layoutX="161.0" layoutY="118.0" prefHeight="29.0" prefWidth="117.0" promptText="Student ID" style="-fx-background-color: #ffffff;" />
+      <TextField layoutX="31.0" layoutY="116.0" prefHeight="33.0" prefWidth="117.0" promptText="Reservation ID" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+         <font>
+            <Font name="Poppins Regular" size="13.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="291.0" layoutY="116.0" prefHeight="33.0" prefWidth="375.0" promptText="Student Name" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+         <font>
+            <Font name="Poppins Regular" size="13.0" />
+         </font>
+      </TextField>
+      <Label alignment="TOP_RIGHT" layoutX="540.0" layoutY="47.0" prefHeight="23.0" prefWidth="126.0" text="2022-07-01" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="17.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="31.0" layoutY="168.0" prefHeight="29.0" prefWidth="117.0" promptText="Room ID" style="-fx-background-color: #ffffff;" />
+      <TextField layoutX="162.0" layoutY="166.0" prefHeight="33.0" prefWidth="209.0" promptText="Room Type" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+         <font>
+            <Font name="Poppins Regular" size="13.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="380.0" layoutY="166.0" prefHeight="33.0" prefWidth="138.0" promptText="Key Money" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+         <font>
+            <Font name="Poppins Regular" size="13.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="528.0" layoutY="166.0" prefHeight="33.0" prefWidth="138.0" promptText="Room Qty." style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+         <font>
+            <Font name="Poppins Regular" size="13.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="32.0" layoutY="247.0" prefHeight="33.0" prefWidth="117.0" promptText="Status" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+         <font>
+            <Font name="Poppins Regular" size="13.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="162.0" layoutY="247.0" prefHeight="33.0" prefWidth="209.0" promptText="Student Qty." style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+         <font>
+            <Font name="Poppins Regular" size="13.0" />
+         </font>
+      </TextField>
+      <JFXButton buttonType="RAISED" layoutX="380.0" layoutY="248.0" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #00ADB5;" text="Reserve" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="528.0" layoutY="248.0" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #5FD068;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="14.0" />
+         </font>
+      </JFXButton>
+      <TableView layoutX="32.0" layoutY="303.0" prefHeight="311.0" prefWidth="634.0">
+        <columns>
+          <TableColumn prefWidth="94.0" text="Roome ID" />
+          <TableColumn prefWidth="115.0" text="Room Type" />
+            <TableColumn prefWidth="114.0" text="Student Qty." />
+            <TableColumn prefWidth="111.0" text="Key Money" />
+            <TableColumn prefWidth="101.0" text="Status" />
+            <TableColumn prefWidth="98.0" text="Delete" />
+        </columns>
+      </TableView>
+      <Separator layoutX="32.0" layoutY="222.0" prefHeight="0.0" prefWidth="634.0" />
+   </children>
+</AnchorPane>
