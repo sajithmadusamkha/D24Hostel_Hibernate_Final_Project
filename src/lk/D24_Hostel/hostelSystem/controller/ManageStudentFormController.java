@@ -35,7 +35,7 @@ public class ManageStudentFormController {
         tblStudents.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("dob"));
         tblStudents.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("gender"));
 
-        loadAllStudents();
+        //loadAllStudents();
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
