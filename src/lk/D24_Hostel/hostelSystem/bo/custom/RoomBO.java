@@ -8,5 +8,5 @@ public interface RoomBO extends SuperBo {
 
     boolean update(RoomDTO dto) throws Exception;
 
-    boolean delete(RoomDTO dto) throws Exception;
+    boolean delete(String roomId) throws Exception;
 }

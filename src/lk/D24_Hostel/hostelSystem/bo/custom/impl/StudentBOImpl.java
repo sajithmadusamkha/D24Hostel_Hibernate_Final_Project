@@ -7,12 +7,11 @@ import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
 import lk.D24_Hostel.hostelSystem.entity.Student;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class StudentBOImpl implements StudentBO {
 
-    StudentDAO studentDAO = (StudentDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.STUDENT);
+    private final StudentDAO studentDAO = (StudentDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.STUDENT);
 
     @Override
     public boolean save(StudentDTO dto) throws Exception {
