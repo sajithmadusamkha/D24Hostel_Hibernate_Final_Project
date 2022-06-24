@@ -1,5 +1,6 @@
 package lk.D24_Hostel.hostelSystem.dao;
 
+import lk.D24_Hostel.hostelSystem.dao.custom.impl.RoomDAOImpl;
 import lk.D24_Hostel.hostelSystem.dao.custom.impl.StudentDAOImpl;
 
 public class DAOFactory {
@@ -17,7 +18,7 @@ public class DAOFactory {
             case STUDENT:
                 return new StudentDAOImpl();
             case ROOM:
-                return null;
+                return new RoomDAOImpl();
             case RESERVATION:
                 return null;
             default:
