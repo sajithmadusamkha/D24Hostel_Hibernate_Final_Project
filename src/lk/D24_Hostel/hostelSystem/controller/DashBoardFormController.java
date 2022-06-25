@@ -34,6 +34,10 @@ public class DashBoardFormController {
         loadUi("ReservationForm");
     }
 
+    public void mngUserOnAction(ActionEvent actionEvent) throws IOException {
+        loadUi("ManageUserForm");
+    }
+
     public void logOut(MouseEvent mouseEvent) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("/lk/D24_Hostel/hostelSystem/view/MainForm.fxml"));
         Scene subScene = new Scene(parent);
@@ -47,5 +51,4 @@ public class DashBoardFormController {
         Parent parent = FXMLLoader.load(getClass().getResource("/lk/D24_Hostel/hostelSystem/view/"+ui+".fxml"));
         root.getChildren().add(parent);
     }
-
 }
