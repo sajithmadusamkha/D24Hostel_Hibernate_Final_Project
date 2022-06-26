@@ -34,6 +34,19 @@ public class ManageStudentFormController {
         tblStudents.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("dob"));
         tblStudents.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("gender"));
 
+        tblStudents.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            btnSave.setText(newValue != null ? "Update" : "Save");
+
+            if(newValue != null){
+                txtStId.setText(newValue.getStudentId());
+                txtStName.setText(newValue.getName());
+                txtStAdd.setText(newValue.getAddress());
+                txtConNo.setText(newValue.getContactNo());
+                txtDob.setText(String.valueOf(newValue.getDob()));
+                txtGender.setText(newValue.getGender());
+            }
+        });
+
         loadAllStudents();
     }
 
@@ -67,14 +80,28 @@ public class ManageStudentFormController {
         String dob = txtDob.getText();
         String gender= txtGender.getText();
 
-        try {
-            if(studentBO.save(new StudentDTO(id,name,address,contact_no, LocalDate.parse(dob),gender))){
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
-                clearFields();
+        if(btnSave.getText().equalsIgnoreCase("Save")){
+            try {
+                if(studentBO.save(new StudentDTO(id,name,address,contact_no, LocalDate.parse(dob),gender))){
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
+                    tblStudents.getItems().add(new StudentTM(id,name,address,contact_no, LocalDate.parse(dob),gender));
+                    clearFields();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+                new Alert(Alert.AlertType.ERROR, "Something Happened. try again carefully!").showAndWait();
             }
-        } catch (Exception e) {
-            System.out.println(e);
-            new Alert(Alert.AlertType.ERROR, "Something Happened. try again carefully!").showAndWait();
+        } else {
+            try {
+                if(studentBO.update(new StudentDTO(id,name,address,contact_no, LocalDate.parse(dob),gender))){
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated.!").show();
+                    loadAllStudents();
+                    clearFields();
+                }
+            } catch (Exception e){
+                System.out.println(e);
+                new Alert(Alert.AlertType.ERROR, "Something Happened. try again carefully!").showAndWait();
+            }
         }
     }
 
@@ -84,6 +111,7 @@ public class ManageStudentFormController {
         try{
             if(studentBO.delete(id)){
                 new Alert(Alert.AlertType.CONFIRMATION, "Deleted.!").show();
+                loadAllStudents();
             }
         } catch (Exception e) {
             System.out.println(e);
