@@ -61,10 +61,6 @@ public class StudentDAOImpl implements StudentDAO {
         Query query = session.createQuery(getAll);
         List<Student> students = query.list();
 
-        for (Student s : students) {
-            students.add(new Student(s.getStudent_id(),s.getName(),s.getAddress(),s.getContact_no(),s.getDob(),s.getGender()));
-        }
-
         transaction.commit();
         session.close();
         return students;
