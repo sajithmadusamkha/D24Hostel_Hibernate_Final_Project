@@ -55,6 +55,7 @@ public class ManageRoomFormController {
         try{
             if(roomBO.save(new RoomDTO(id,type,Double.parseDouble(keyMoney),Integer.parseInt(qty)))){
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
+                tblRooms.getItems().add(new RoomTM(id,type,Double.parseDouble(keyMoney),Integer.parseInt(qty)));
                 clearText();
             }
         } catch (Exception e){
@@ -69,6 +70,7 @@ public class ManageRoomFormController {
         try{
             if(roomBO.delete(RoomId)){
                 new Alert(Alert.AlertType.CONFIRMATION, "Deleted.!").show();
+                loadAllRooms();
             }
         } catch (Exception e) {
             System.out.println(e);
