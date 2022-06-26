@@ -61,7 +61,7 @@
             <Font name="Poppins Regular" size="14.0" />
          </font>
       </JFXButton>
-      <TableView layoutX="27.0" layoutY="261.0" prefHeight="353.0" prefWidth="634.0">
+      <TableView fx:id="tblRooms" layoutX="27.0" layoutY="261.0" prefHeight="353.0" prefWidth="634.0">
         <columns>
           <TableColumn prefWidth="147.0" text="Room ID" />
           <TableColumn prefWidth="135.0" text="Type" />

@@ -5,6 +5,7 @@ import lk.D24_Hostel.hostelSystem.db.HibernateUtil;
 import lk.D24_Hostel.hostelSystem.entity.Room;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -54,6 +55,15 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public List<Room> findAll() throws Exception {
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        String getAll = "FROM Room";
+        Query query = session.createQuery(getAll);
+        List<Room> rooms = query.list();
+
+        transaction.commit();
+        session.close();
+        return rooms;
     }
 }
