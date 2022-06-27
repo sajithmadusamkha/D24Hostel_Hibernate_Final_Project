@@ -1,5 +1,6 @@
 package lk.D24_Hostel.hostelSystem.bo;
 
+import lk.D24_Hostel.hostelSystem.bo.custom.impl.ReservationBOImpl;
 import lk.D24_Hostel.hostelSystem.bo.custom.impl.RoomBoImpl;
 import lk.D24_Hostel.hostelSystem.bo.custom.impl.StudentBOImpl;
 
@@ -20,7 +21,7 @@ public class BOFactory {
             case ROOM:
                 return new RoomBoImpl();
             case RESERVATION:
-                return null;
+                return new ReservationBOImpl();
             default:
                 return null;
         }

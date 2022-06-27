@@ -23,13 +23,13 @@
          </font>
       </Label>
       <Separator layoutX="32.0" layoutY="86.0" prefHeight="0.0" prefWidth="634.0" />
-      <ComboBox layoutX="161.0" layoutY="118.0" prefHeight="29.0" prefWidth="117.0" promptText="Student ID" style="-fx-background-color: #ffffff;" />
-      <TextField layoutX="31.0" layoutY="116.0" prefHeight="33.0" prefWidth="117.0" promptText="Reservation ID" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+      <ComboBox fx:id="cmbStudentID" layoutX="161.0" layoutY="118.0" prefHeight="29.0" prefWidth="117.0" promptText="Student ID" style="-fx-background-color: #ffffff;" />
+      <TextField fx:id="txtReserveId" layoutX="31.0" layoutY="116.0" prefHeight="33.0" prefWidth="117.0" promptText="Reservation ID" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
          <font>
             <Font name="Poppins Regular" size="13.0" />
          </font>
       </TextField>
-      <TextField layoutX="291.0" layoutY="116.0" prefHeight="33.0" prefWidth="375.0" promptText="Student Name" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+      <TextField fx:id="txtStudentName" layoutX="291.0" layoutY="116.0" prefHeight="33.0" prefWidth="375.0" promptText="Student Name" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
          <font>
             <Font name="Poppins Regular" size="13.0" />
          </font>
@@ -39,43 +39,43 @@
             <Font name="Poppins Regular" size="17.0" />
          </font>
       </Label>
-      <ComboBox layoutX="31.0" layoutY="168.0" prefHeight="29.0" prefWidth="117.0" promptText="Room ID" style="-fx-background-color: #ffffff;" />
-      <TextField layoutX="162.0" layoutY="166.0" prefHeight="33.0" prefWidth="209.0" promptText="Room Type" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+      <ComboBox fx:id="cmbRoomID" layoutX="31.0" layoutY="168.0" prefHeight="29.0" prefWidth="117.0" promptText="Room ID" style="-fx-background-color: #ffffff;" />
+      <TextField fx:id="txtRoomType" layoutX="162.0" layoutY="166.0" prefHeight="33.0" prefWidth="209.0" promptText="Room Type" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
          <font>
             <Font name="Poppins Regular" size="13.0" />
          </font>
       </TextField>
-      <TextField layoutX="380.0" layoutY="166.0" prefHeight="33.0" prefWidth="138.0" promptText="Key Money" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+      <TextField fx:id="txtKeyMoney" layoutX="380.0" layoutY="166.0" prefHeight="33.0" prefWidth="138.0" promptText="Key Money" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
          <font>
             <Font name="Poppins Regular" size="13.0" />
          </font>
       </TextField>
-      <TextField layoutX="528.0" layoutY="166.0" prefHeight="33.0" prefWidth="138.0" promptText="Room Qty." style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+      <TextField fx:id="txtRoomQty" layoutX="528.0" layoutY="166.0" prefHeight="33.0" prefWidth="138.0" promptText="Room Qty." style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
          <font>
             <Font name="Poppins Regular" size="13.0" />
          </font>
       </TextField>
-      <TextField layoutX="32.0" layoutY="247.0" prefHeight="33.0" prefWidth="117.0" promptText="Status" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+      <TextField fx:id="txtStatus" layoutX="32.0" layoutY="247.0" prefHeight="33.0" prefWidth="117.0" promptText="Status" style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
          <font>
             <Font name="Poppins Regular" size="13.0" />
          </font>
       </TextField>
-      <TextField layoutX="162.0" layoutY="247.0" prefHeight="33.0" prefWidth="209.0" promptText="Student Qty." style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
+      <TextField fx:id="txtStudentQty" layoutX="162.0" layoutY="247.0" prefHeight="33.0" prefWidth="209.0" promptText="Student Qty." style="-fx-border-color: #00ADB5; -fx-border-width: 2px 2px 2px 2px;">
          <font>
             <Font name="Poppins Regular" size="13.0" />
          </font>
       </TextField>
-      <JFXButton buttonType="RAISED" layoutX="380.0" layoutY="248.0" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #00ADB5;" text="Reserve" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="380.0" layoutY="248.0" onAction="#btnReserveOnAction" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #00ADB5;" text="Reserve" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="528.0" layoutY="248.0" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #5FD068;" text="Update" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="528.0" layoutY="248.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #5FD068;" text="Update" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="14.0" />
          </font>
       </JFXButton>
-      <TableView layoutX="32.0" layoutY="303.0" prefHeight="311.0" prefWidth="634.0">
+      <TableView fx:id="tblReservation" layoutX="32.0" layoutY="303.0" prefHeight="311.0" prefWidth="634.0">
         <columns>
           <TableColumn prefWidth="94.0" text="Roome ID" />
           <TableColumn prefWidth="115.0" text="Room Type" />
