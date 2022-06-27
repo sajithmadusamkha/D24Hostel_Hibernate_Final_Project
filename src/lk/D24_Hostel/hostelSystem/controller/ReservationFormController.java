@@ -2,6 +2,7 @@ package lk.D24_Hostel.hostelSystem.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import lk.D24_Hostel.hostelSystem.bo.BOFactory;
@@ -9,6 +10,7 @@ import lk.D24_Hostel.hostelSystem.bo.custom.ReservationBO;
 import lk.D24_Hostel.hostelSystem.dto.RoomDTO;
 import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class ReservationFormController {
@@ -22,10 +24,14 @@ public class ReservationFormController {
     public TextField txtStatus;
     public TextField txtStudentQty;
     public TableView tblReservation;
+    public Label lblDate;
 
     private final ReservationBO reservationBO = (ReservationBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.RESERVATION);
 
     public void initialize(){
+
+        lblDate.setText(LocalDate.now().toString());
+
         loadAllStudentIDs();
         loadAllRoomIDs();
     }

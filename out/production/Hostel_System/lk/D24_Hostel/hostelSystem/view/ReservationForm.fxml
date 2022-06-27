@@ -34,7 +34,7 @@
             <Font name="Poppins Regular" size="13.0" />
          </font>
       </TextField>
-      <Label alignment="TOP_RIGHT" layoutX="540.0" layoutY="47.0" prefHeight="23.0" prefWidth="126.0" text="2022-07-01" textFill="WHITE">
+      <Label fx:id="lblDate" alignment="TOP_RIGHT" layoutX="540.0" layoutY="47.0" prefHeight="23.0" prefWidth="126.0" text="2022-07-01" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="17.0" />
          </font>
