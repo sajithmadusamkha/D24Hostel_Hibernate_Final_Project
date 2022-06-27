@@ -65,4 +65,9 @@ public class StudentDAOImpl implements StudentDAO {
         session.close();
         return students;
     }
+
+    @Override
+    public String generateNewId() throws Exception {
+        return null;
+    }
 }

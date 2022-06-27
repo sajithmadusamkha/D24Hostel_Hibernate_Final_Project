@@ -66,4 +66,9 @@ public class RoomDAOImpl implements RoomDAO {
         session.close();
         return rooms;
     }
+
+    @Override
+    public String generateNewId() throws Exception {
+        return null;
+    }
 }
