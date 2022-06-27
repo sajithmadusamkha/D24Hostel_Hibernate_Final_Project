@@ -65,24 +65,25 @@
             <Font name="Poppins Regular" size="13.0" />
          </font>
       </TextField>
-      <JFXButton buttonType="RAISED" layoutX="380.0" layoutY="248.0" onAction="#btnReserveOnAction" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #00ADB5;" text="Reserve" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="528.0" layoutY="249.0" onAction="#btnReserveOnAction" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #00ADB5;" text="Reserve" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="528.0" layoutY="248.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #5FD068;" text="Update" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="380.0" layoutY="249.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #5FD068;" text="Add" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="14.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="tblReservation" layoutX="32.0" layoutY="303.0" prefHeight="311.0" prefWidth="634.0">
+      <TableView fx:id="tblReservation" layoutX="13.0" layoutY="303.0" prefHeight="311.0" prefWidth="671.0">
         <columns>
-          <TableColumn prefWidth="94.0" text="Roome ID" />
-          <TableColumn prefWidth="115.0" text="Room Type" />
-            <TableColumn prefWidth="114.0" text="Student Qty." />
+          <TableColumn text="Roome ID" />
+          <TableColumn prefWidth="123.0" text="Room Type" />
+            <TableColumn prefWidth="81.0" text="Student Qty." />
             <TableColumn prefWidth="111.0" text="Key Money" />
-            <TableColumn prefWidth="101.0" text="Status" />
-            <TableColumn prefWidth="98.0" text="Delete" />
+            <TableColumn prefWidth="92.0" text="Total" />
+            <TableColumn prefWidth="89.0" text="Status" />
+            <TableColumn prefWidth="94.0" text="Delete" />
         </columns>
       </TableView>
       <Separator layoutX="32.0" layoutY="222.0" prefHeight="0.0" prefWidth="634.0" />
