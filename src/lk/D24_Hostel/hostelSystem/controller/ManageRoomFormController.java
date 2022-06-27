@@ -29,6 +29,17 @@ public class ManageRoomFormController {
         tblRooms.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("keyMoney"));
         tblRooms.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("roomQty"));
 
+        tblRooms.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            btnSave.setText(newValue != null ? "Update" : "Save");
+
+            if(newValue != null){
+                txtRoomID.setText(newValue.getRoomTypeId());
+                txtRoomType.setText(newValue.getType());
+                txtRoomQty.setText(String.valueOf(newValue.getRoomQty()));
+                txtKeyMoney.setText(String.valueOf(newValue.getKeyMoney()));
+            }
+        });
+
         loadAllRooms();
     }
 
@@ -52,15 +63,28 @@ public class ManageRoomFormController {
         String keyMoney = txtKeyMoney.getText();
         String qty = txtRoomQty.getText();
 
-        try{
-            if(roomBO.save(new RoomDTO(id,type,Double.parseDouble(keyMoney),Integer.parseInt(qty)))){
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
-                tblRooms.getItems().add(new RoomTM(id,type,Double.parseDouble(keyMoney),Integer.parseInt(qty)));
-                clearText();
+        if(btnSave.getText().equalsIgnoreCase("Save")){
+            try{
+                if(roomBO.save(new RoomDTO(id,type,Double.parseDouble(keyMoney),Integer.parseInt(qty)))){
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
+                    tblRooms.getItems().add(new RoomTM(id,type,Double.parseDouble(keyMoney),Integer.parseInt(qty)));
+                    clearText();
+                }
+            } catch (Exception e){
+                System.out.println(e);
+                new Alert(Alert.AlertType.ERROR, "Something Happened. try again carefully!").showAndWait();
             }
-        } catch (Exception e){
-            System.out.println(e);
-            new Alert(Alert.AlertType.ERROR, "Something Happened. try again carefully!").showAndWait();
+        } else {
+            try{
+                if(roomBO.update(new RoomDTO(id,type,Double.parseDouble(keyMoney),Integer.parseInt(qty)))){
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated.!").show();
+                    loadAllRooms();
+                    clearText();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+                new Alert(Alert.AlertType.ERROR, "Something Happened. try again carefully!").showAndWait();
+            }
         }
     }
 
@@ -71,6 +95,7 @@ public class ManageRoomFormController {
             if(roomBO.delete(RoomId)){
                 new Alert(Alert.AlertType.CONFIRMATION, "Deleted.!").show();
                 loadAllRooms();
+                clearText();
             }
         } catch (Exception e) {
             System.out.println(e);
