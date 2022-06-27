@@ -112,6 +112,7 @@ public class ManageStudentFormController {
             if(studentBO.delete(id)){
                 new Alert(Alert.AlertType.CONFIRMATION, "Deleted.!").show();
                 loadAllStudents();
+                clearFields();
             }
         } catch (Exception e) {
             System.out.println(e);
