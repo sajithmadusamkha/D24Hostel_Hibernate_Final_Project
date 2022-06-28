@@ -25,8 +25,7 @@ public class ReservationBOImpl implements ReservationBO {
 
     @Override
     public boolean saveReservation(ReservationDTO dto) throws Exception {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        boolean save = reservationDAO.add(new Reservation(
+        return reservationDAO.add(new Reservation(
                 dto.getResId(),
                 dto.getDate(),
                 dto.getStudent(),
@@ -35,11 +34,6 @@ public class ReservationBOImpl implements ReservationBO {
                 dto.getStatus(),
                 dto.getQty()
         ));
-
-        ReservationDTO reservation = null;
-        RoomDTO room = null;
-        room.setRoomQty(room.getRoomQty() - reservation.getQty());
-        return false;
     }
 
     @Override

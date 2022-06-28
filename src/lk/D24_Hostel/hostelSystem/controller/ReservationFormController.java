@@ -1,14 +1,14 @@
 package lk.D24_Hostel.hostelSystem.controller;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import lk.D24_Hostel.hostelSystem.bo.BOFactory;
 import lk.D24_Hostel.hostelSystem.bo.custom.ReservationBO;
+import lk.D24_Hostel.hostelSystem.dto.ReservationDTO;
 import lk.D24_Hostel.hostelSystem.dto.RoomDTO;
 import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
+import lk.D24_Hostel.hostelSystem.entity.Room;
+import lk.D24_Hostel.hostelSystem.entity.Student;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -37,6 +37,22 @@ public class ReservationFormController {
     }
 
     public void btnReserveOnAction(ActionEvent actionEvent) {
+        String id = txtReserveId.getText();
+        String date = lblDate.getText();
+        Student studentId = (Student) cmbStudentID.getSelectionModel().getSelectedItem();
+        Room roomId = (Room) cmbRoomID.getSelectionModel().getSelectedItem();
+        String keyMoney = txtKeyMoney.getText();
+        String status = txtStatus.getText();
+        String qty = txtStatus.getText();
+
+        try{
+            if(reservationBO.saveReservation(new ReservationDTO(id,LocalDate.parse(date),studentId,roomId,Double.parseDouble(keyMoney),status,Integer.parseInt(qty)))){
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            new Alert(Alert.AlertType.ERROR, "Something Happened. try again carefully!").showAndWait();
+        }
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
