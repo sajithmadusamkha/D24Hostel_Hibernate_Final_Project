@@ -9,6 +9,7 @@ import lk.D24_Hostel.hostelSystem.dto.RoomDTO;
 import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
 import lk.D24_Hostel.hostelSystem.entity.Room;
 import lk.D24_Hostel.hostelSystem.entity.Student;
+import lk.D24_Hostel.hostelSystem.view.tdm.ReservationTM;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -23,7 +24,7 @@ public class ReservationFormController {
     public TextField txtRoomQty;
     public TextField txtStatus;
     public TextField txtStudentQty;
-    public TableView tblReservation;
+    public TableView<ReservationTM> tblReservation;
     public Label lblDate;
 
     private final ReservationBO reservationBO = (ReservationBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.RESERVATION);
