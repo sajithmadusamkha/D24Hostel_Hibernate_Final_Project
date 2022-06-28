@@ -1,14 +1,24 @@
 package lk.D24_Hostel.hostelSystem.dao.custom.impl;
 
 import lk.D24_Hostel.hostelSystem.dao.custom.ReservationDAO;
+import lk.D24_Hostel.hostelSystem.db.HibernateUtil;
 import lk.D24_Hostel.hostelSystem.entity.Reservation;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
 public class ReservationDAOImpl implements ReservationDAO {
     @Override
     public boolean add(Reservation entity) throws Exception {
-        return false;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.save(entity);
+
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override

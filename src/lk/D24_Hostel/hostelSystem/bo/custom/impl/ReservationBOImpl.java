@@ -5,11 +5,14 @@ import lk.D24_Hostel.hostelSystem.dao.DAOFactory;
 import lk.D24_Hostel.hostelSystem.dao.custom.ReservationDAO;
 import lk.D24_Hostel.hostelSystem.dao.custom.RoomDAO;
 import lk.D24_Hostel.hostelSystem.dao.custom.StudentDAO;
+import lk.D24_Hostel.hostelSystem.db.HibernateUtil;
 import lk.D24_Hostel.hostelSystem.dto.ReservationDTO;
 import lk.D24_Hostel.hostelSystem.dto.RoomDTO;
 import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
+import lk.D24_Hostel.hostelSystem.entity.Reservation;
 import lk.D24_Hostel.hostelSystem.entity.Room;
 import lk.D24_Hostel.hostelSystem.entity.Student;
+import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,20 @@ public class ReservationBOImpl implements ReservationBO {
 
     @Override
     public boolean saveReservation(ReservationDTO dto) throws Exception {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        boolean save = reservationDAO.add(new Reservation(
+                dto.getResId(),
+                dto.getDate(),
+                dto.getStudent(),
+                dto.getRoom(),
+                dto.getKey_money(),
+                dto.getStatus(),
+                dto.getQty()
+        ));
+
+        ReservationDTO reservation = null;
+        RoomDTO room = null;
+        room.setRoomQty(room.getRoomQty() - reservation.getQty());
         return false;
     }
 
