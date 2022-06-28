@@ -40,8 +40,8 @@ public class UserDAOImpl implements UserDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        Student student = session.load(Student.class, s);
-        session.delete(student);
+        User user = session.load(User.class, s);
+        session.delete(user);
 
         transaction.commit();
         session.close();
