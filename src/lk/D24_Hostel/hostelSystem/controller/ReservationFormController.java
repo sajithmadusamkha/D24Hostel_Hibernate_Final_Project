@@ -52,12 +52,25 @@ public class ReservationFormController {
 
         cmbStudentID.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null){
-
+                try {
+                    StudentDTO search = reservationBO.searchStudent(newValue + "");
+                    txtStudentName.setText(search.getName());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println(e);
+                }
+            } else {
+                txtStudentName.clear();
             }
         });
 
         loadAllStudentIDs();
         loadAllRoomIDs();
+        initUi();
+    }
+
+    private void initUi() {
+        txtStudentName.setEditable(false);
     }
 
     public void btnReserveOnAction(ActionEvent actionEvent) {

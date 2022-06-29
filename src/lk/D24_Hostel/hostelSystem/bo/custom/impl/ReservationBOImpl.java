@@ -5,14 +5,12 @@ import lk.D24_Hostel.hostelSystem.dao.DAOFactory;
 import lk.D24_Hostel.hostelSystem.dao.custom.ReservationDAO;
 import lk.D24_Hostel.hostelSystem.dao.custom.RoomDAO;
 import lk.D24_Hostel.hostelSystem.dao.custom.StudentDAO;
-import lk.D24_Hostel.hostelSystem.db.HibernateUtil;
 import lk.D24_Hostel.hostelSystem.dto.ReservationDTO;
 import lk.D24_Hostel.hostelSystem.dto.RoomDTO;
 import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
 import lk.D24_Hostel.hostelSystem.entity.Reservation;
 import lk.D24_Hostel.hostelSystem.entity.Room;
 import lk.D24_Hostel.hostelSystem.entity.Student;
-import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +47,12 @@ public class ReservationBOImpl implements ReservationBO {
     @Override
     public List<ReservationDTO> getAllReservation() throws Exception {
         return null;
+    }
+
+    @Override
+    public StudentDTO searchStudent(String id) throws Exception {
+        Student ent = studentDAO.find(id);
+        return new StudentDTO(ent.getStudent_id(),ent.getName(), ent.getAddress(), ent.getContact_no(),ent.getDob(),ent.getGender());
     }
 
     @Override

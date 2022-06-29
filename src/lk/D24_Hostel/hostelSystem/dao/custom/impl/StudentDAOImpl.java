@@ -49,6 +49,18 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public Student find(String s) throws Exception {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        String find = "FROM Student WHERE student_id = :id";
+        Query query = session.createQuery(find);
+        query.setParameter("id", s);
+        List<Student> students = query.list();
+        for (Student st : students) {
+            return new Student(st.getStudent_id(),st.getName(),st.getAddress(),st.getContact_no(),st.getDob(),st.getGender());
+        }
+        transaction.commit();
+        session.close();
         return null;
     }
 
