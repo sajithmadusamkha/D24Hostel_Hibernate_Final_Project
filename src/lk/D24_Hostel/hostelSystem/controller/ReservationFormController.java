@@ -18,8 +18,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ReservationFormController {
-    public ComboBox cmbStudentID;
-    public ComboBox cmbRoomID;
+    public ComboBox<Object> cmbStudentID;
+    public ComboBox<Object> cmbRoomID;
     public TextField txtReserveId;
     public TextField txtStudentName;
     public TextField txtRoomType;
@@ -86,6 +86,21 @@ public class ReservationFormController {
             }
         });
 
+        tblReservation.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, selectedReservation) -> {
+            if(selectedReservation != null) {
+                cmbRoomID.setDisable(false);
+                cmbRoomID.setValue(selectedReservation.getRoomId());
+                btnSave.setText("Update");
+                txtRoomQty.setText(Integer.parseInt(txtRoomQty.getText()) + "");
+                txtStudentQty.setText(selectedReservation.getStudentQry() + "");
+            } else {
+                btnSave.setText("Add");
+                cmbRoomID.setDisable(false);
+                cmbRoomID.getSelectionModel().clearSelection();
+                txtStudentQty.clear();
+            }
+        });
+
         loadAllStudentIDs();
         loadAllRoomIDs();
         initUi();
@@ -117,21 +132,26 @@ public class ReservationFormController {
         }
     }
 
+    //public boolean saveReservation(){}
+
     public void btnAddOnAction(ActionEvent actionEvent) {
-        String id = txtReserveId.getText();
-        String date = lblDate.getText();
-        Student studentId = (Student) cmbStudentID.getSelectionModel().getSelectedItem();
-        Room roomId = (Room) cmbRoomID.getSelectionModel().getSelectedItem();
+        String id = (String) cmbRoomID.getSelectionModel().getSelectedItem();
         double keyMoney = Double.parseDouble(txtKeyMoney.getText());
         String status = txtStatus.getText();
-        Integer qty = Integer.parseInt(txtStatus.getText());
+        Integer qty = Integer.parseInt(txtStudentQty.getText());
         String roomType = txtRoomType.getText();
         double total = keyMoney*qty;
 
         boolean exists = tblReservation.getItems().stream().anyMatch(reserve -> reserve.getRoomId().equals(id));
 
         if(exists) {
+            ReservationTM reservationTM = tblReservation.getItems().stream().filter(reserve -> reserve.getRoomId().equals(id)).findFirst().get();
 
+            if(btnSave.getText().equalsIgnoreCase("Update")){
+                reservationTM.setStudentQry(qty);
+                reservationTM.setTotal(total);
+                tblReservation.getSelectionModel().clearSelection();
+            }
         } else {
             tblReservation.getItems().add(new ReservationTM(id,roomType,qty,keyMoney,total,status));
         }
