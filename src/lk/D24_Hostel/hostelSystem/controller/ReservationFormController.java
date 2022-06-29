@@ -118,7 +118,23 @@ public class ReservationFormController {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
+        String id = txtReserveId.getText();
+        String date = lblDate.getText();
+        Student studentId = (Student) cmbStudentID.getSelectionModel().getSelectedItem();
+        Room roomId = (Room) cmbRoomID.getSelectionModel().getSelectedItem();
+        double keyMoney = Double.parseDouble(txtKeyMoney.getText());
+        String status = txtStatus.getText();
+        Integer qty = Integer.parseInt(txtStatus.getText());
+        String roomType = txtRoomType.getText();
+        double total = keyMoney*qty;
 
+        boolean exists = tblReservation.getItems().stream().anyMatch(reserve -> reserve.getRoomId().equals(id));
+
+        if(exists) {
+
+        } else {
+            tblReservation.getItems().add(new ReservationTM(id,roomType,qty,keyMoney,total,status));
+        }
     }
 
     private void loadAllRoomIDs() {
