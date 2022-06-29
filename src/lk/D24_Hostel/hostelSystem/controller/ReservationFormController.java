@@ -113,17 +113,23 @@ public class ReservationFormController {
         txtKeyMoney.setEditable(false);
     }
 
-    public void btnReserveOnAction(ActionEvent actionEvent) {
+    public void btnReserveOnAction(ActionEvent actionEvent) throws Exception {
         String id = txtReserveId.getText();
         String date = lblDate.getText();
-        Student studentId = (Student) cmbStudentID.getSelectionModel().getSelectedItem();
-        Room roomId = (Room) cmbRoomID.getSelectionModel().getSelectedItem();
         String keyMoney = txtKeyMoney.getText();
         String status = txtStatus.getText();
         String qty = txtStatus.getText();
 
+        //Student
+        StudentDTO studentDTO = reservationBO.searchStudent((String) cmbStudentID.getValue());
+        Student student = new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),studentDTO.getContactNo(),studentDTO.getDob(),studentDTO.getGender());
+
+        //Room
+        RoomDTO roomDTO = reservationBO.searchRoom((String) cmbRoomID.getValue());
+        Room room = new Room(roomDTO.getRoomTypeId(),roomDTO.getType(),roomDTO.getKeyMoney(),roomDTO.getRoomQty());
+
         try{
-            if(reservationBO.saveReservation(new ReservationDTO(id,LocalDate.parse(date),studentId,roomId,Double.parseDouble(keyMoney),status,Integer.parseInt(qty)))){
+            if(reservationBO.saveReservation(new ReservationDTO(id,LocalDate.parse(date),student,room,Double.parseDouble(keyMoney),status,Integer.parseInt(qty)))){
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
             }
         } catch (Exception e) {
@@ -131,8 +137,6 @@ public class ReservationFormController {
             new Alert(Alert.AlertType.ERROR, "Something Happened. try again carefully!").showAndWait();
         }
     }
-
-    //public boolean saveReservation(){}
 
     public void btnAddOnAction(ActionEvent actionEvent) {
         String id = (String) cmbRoomID.getSelectionModel().getSelectedItem();
