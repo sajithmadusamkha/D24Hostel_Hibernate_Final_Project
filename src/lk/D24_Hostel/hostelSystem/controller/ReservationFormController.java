@@ -118,7 +118,7 @@ public class ReservationFormController {
         String date = lblDate.getText();
         String keyMoney = txtKeyMoney.getText();
         String status = txtStatus.getText();
-        String qty = txtStatus.getText();
+        String qty = txtStudentQty.getText();
 
         //Student
         StudentDTO studentDTO = reservationBO.searchStudent((String) cmbStudentID.getValue());
