@@ -59,6 +59,7 @@ public class StudentDAOImpl implements StudentDAO {
         for (Student st : students) {
             return new Student(st.getStudent_id(),st.getName(),st.getAddress(),st.getContact_no(),st.getDob(),st.getGender());
         }
+
         transaction.commit();
         session.close();
         return null;

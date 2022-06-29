@@ -64,6 +64,20 @@ public class ReservationFormController {
             }
         });
 
+        cmbRoomID.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null) {
+                try {
+                    RoomDTO search = reservationBO.searchRoom(newValue + "");
+                    txtRoomType.setText(search.getType());
+                    txtKeyMoney.setText(search.getKeyMoney() + "");
+                    txtRoomQty.setText(search.getRoomQty() + "");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println(e);
+                }
+            }
+        });
+
         loadAllStudentIDs();
         loadAllRoomIDs();
         initUi();
@@ -71,6 +85,9 @@ public class ReservationFormController {
 
     private void initUi() {
         txtStudentName.setEditable(false);
+        txtRoomType.setEditable(false);
+        txtRoomQty.setEditable(false);
+        txtKeyMoney.setEditable(false);
     }
 
     public void btnReserveOnAction(ActionEvent actionEvent) {

@@ -50,6 +50,19 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public Room find(String s) throws Exception {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        String find = "FROM Room WHERE room_type_id = :id";
+        Query query = session.createQuery(find);
+        query.setParameter("id", s);
+        List<Room> rooms = query.list();
+        for(Room r : rooms) {
+            return new Room(r.getRoom_type_id(),r.getType(), r.getKey_money(),r.getRoom_qty());
+        }
+
+        transaction.commit();
+        session.close();
         return null;
     }
 

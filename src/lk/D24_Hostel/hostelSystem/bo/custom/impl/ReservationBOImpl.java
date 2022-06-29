@@ -56,6 +56,12 @@ public class ReservationBOImpl implements ReservationBO {
     }
 
     @Override
+    public RoomDTO searchRoom(String id) throws Exception {
+        Room ent = roomDAO.find(id);
+        return new RoomDTO(ent.getRoom_type_id(), ent.getType(), ent.getKey_money(), ent.getRoom_qty());
+    }
+
+    @Override
     public List<StudentDTO> getAllStudents() throws Exception {
         List<Student> all = studentDAO.findAll();
         ArrayList<StudentDTO> allStudents = new ArrayList<>();
