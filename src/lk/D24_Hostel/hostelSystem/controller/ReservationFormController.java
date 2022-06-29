@@ -1,7 +1,9 @@
 package lk.D24_Hostel.hostelSystem.controller;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.D24_Hostel.hostelSystem.bo.BOFactory;
 import lk.D24_Hostel.hostelSystem.bo.custom.ReservationBO;
 import lk.D24_Hostel.hostelSystem.dto.ReservationDTO;
@@ -30,8 +32,29 @@ public class ReservationFormController {
     private final ReservationBO reservationBO = (ReservationBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.RESERVATION);
 
     public void initialize(){
+        tblReservation.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("roomId"));
+        tblReservation.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        tblReservation.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("studentQry"));
+        tblReservation.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("keyMoney"));
+        tblReservation.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("total"));
+        tblReservation.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("status"));
+        TableColumn<ReservationTM, Button> lastCol = (TableColumn<ReservationTM, Button>) tblReservation.getColumns().get(6);
+        lastCol.setCellValueFactory(param -> {
+            Button btnDelete = new Button("Delete");
+            btnDelete.setOnAction(event -> {
+                tblReservation.getItems().remove(param.getValue());
+                tblReservation.getSelectionModel().clearSelection();
+            });
+            return new ReadOnlyObjectWrapper<>(btnDelete);
+        });
 
         lblDate.setText(LocalDate.now().toString());
+
+        cmbStudentID.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null){
+
+            }
+        });
 
         loadAllStudentIDs();
         loadAllRoomIDs();
