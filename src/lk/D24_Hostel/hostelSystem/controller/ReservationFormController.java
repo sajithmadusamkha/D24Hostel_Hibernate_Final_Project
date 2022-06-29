@@ -1,5 +1,6 @@
 package lk.D24_Hostel.hostelSystem.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -28,6 +29,7 @@ public class ReservationFormController {
     public TextField txtStudentQty;
     public TableView<ReservationTM> tblReservation;
     public Label lblDate;
+    public JFXButton btnSave;
 
     private final ReservationBO reservationBO = (ReservationBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.RESERVATION);
 
@@ -75,6 +77,12 @@ public class ReservationFormController {
                     e.printStackTrace();
                     System.out.println(e);
                 }
+            } else {
+                txtRoomQty.clear();
+                txtKeyMoney.clear();
+                txtRoomType.clear();
+                txtStatus.clear();
+                txtStudentQty.clear();
             }
         });
 
@@ -109,7 +117,8 @@ public class ReservationFormController {
         }
     }
 
-    public void btnUpdateOnAction(ActionEvent actionEvent) {
+    public void btnAddOnAction(ActionEvent actionEvent) {
+
     }
 
     private void loadAllRoomIDs() {
