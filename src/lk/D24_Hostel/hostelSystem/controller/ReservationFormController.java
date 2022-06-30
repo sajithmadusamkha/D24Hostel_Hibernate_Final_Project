@@ -155,10 +155,16 @@ public class ReservationFormController {
                 reservationTM.setStudentQry(qty);
                 reservationTM.setTotal(total);
                 tblReservation.getSelectionModel().clearSelection();
+            } else {
+                reservationTM.setStudentQry(reservationTM.getStudentQry() + qty);
+                total = reservationTM.getStudentQry()*qty;
+                reservationTM.setTotal(total);
             }
+            tblReservation.refresh();
         } else {
             tblReservation.getItems().add(new ReservationTM(id,roomType,qty,keyMoney,total,status));
         }
+        cmbRoomID.requestFocus();
     }
 
     private void loadAllRoomIDs() {
