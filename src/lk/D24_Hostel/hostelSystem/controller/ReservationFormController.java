@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.D24_Hostel.hostelSystem.bo.BOFactory;
 import lk.D24_Hostel.hostelSystem.bo.custom.ReservationBO;
+import lk.D24_Hostel.hostelSystem.bo.custom.RoomBO;
 import lk.D24_Hostel.hostelSystem.dto.ReservationDTO;
 import lk.D24_Hostel.hostelSystem.dto.RoomDTO;
 import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
@@ -32,6 +33,7 @@ public class ReservationFormController {
     public JFXButton btnSave;
 
     private final ReservationBO reservationBO = (ReservationBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.RESERVATION);
+    private final RoomBO roomBO = (RoomBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.ROOM);
 
     public void initialize(){
         tblReservation.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("roomId"));
@@ -130,12 +132,20 @@ public class ReservationFormController {
 
         try{
             if(reservationBO.saveReservation(new ReservationDTO(id,LocalDate.parse(date),student,room,Double.parseDouble(keyMoney),status,Integer.parseInt(qty)))){
+                updateRoomQty((String) cmbRoomID.getValue());
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
             }
         } catch (Exception e) {
             System.out.println(e);
             new Alert(Alert.AlertType.ERROR, "Something Happened. try again carefully!").showAndWait();
         }
+    }
+
+    private void updateRoomQty(String id) throws Exception {
+        RoomDTO roomDTO = reservationBO.searchRoom(id);
+        Integer newQty = roomDTO.getRoomQty() - Integer.parseInt(txtStudentQty.getText());
+        roomDTO.setRoomQty(newQty);
+        roomBO.update(roomDTO);
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {

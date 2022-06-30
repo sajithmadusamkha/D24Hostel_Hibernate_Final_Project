@@ -2,7 +2,6 @@ package lk.D24_Hostel.hostelSystem.dao.custom.impl;
 
 import lk.D24_Hostel.hostelSystem.dao.custom.UserDAO;
 import lk.D24_Hostel.hostelSystem.db.HibernateUtil;
-import lk.D24_Hostel.hostelSystem.entity.Student;
 import lk.D24_Hostel.hostelSystem.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -69,6 +68,21 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public String generateNewId() throws Exception {
+        return null;
+    }
+
+    @Override
+    public User LoginValidation(String useName, String password) throws Exception {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        String find = "FROM User WHERE user_name = :userName AND password = :pwd";
+        Query query = session.createQuery(find);
+        query.setParameter("userName",useName);
+        query.setParameter("pwd",password);
+
+        transaction.commit();
+        session.close();
         return null;
     }
 }

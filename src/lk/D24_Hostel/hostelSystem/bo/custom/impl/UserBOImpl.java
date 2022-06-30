@@ -46,4 +46,10 @@ public class UserBOImpl implements UserBO {
         }
         return allUsers;
     }
+
+    @Override
+    public UserDTO loginValidation(String userName, String password) throws Exception {
+        User ent = userDAO.LoginValidation(userName,password);
+        return new UserDTO(ent.getUser_id(), ent.getUser_name(),ent.getPassword());
+    }
 }
