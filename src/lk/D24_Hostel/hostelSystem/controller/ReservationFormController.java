@@ -31,6 +31,9 @@ public class ReservationFormController {
     public TableView<ReservationTM> tblReservation;
     public Label lblDate;
     public JFXButton btnSave;
+    public Label lblRoomId;
+    public Label lblQty;
+
 
     private final ReservationBO reservationBO = (ReservationBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.RESERVATION);
     private final RoomBO roomBO = (RoomBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.ROOM);
@@ -75,6 +78,8 @@ public class ReservationFormController {
                     txtRoomType.setText(search.getType());
                     txtKeyMoney.setText(search.getKeyMoney() + "");
                     txtRoomQty.setText(search.getRoomQty() + "");
+                    lblRoomId.setText(search.getRoomTypeId());
+                    lblQty.setText(search.getRoomQty() + "");
                 } catch (Exception e) {
                     e.printStackTrace();
                     System.out.println(e);

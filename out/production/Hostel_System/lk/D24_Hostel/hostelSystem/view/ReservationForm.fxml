@@ -87,5 +87,15 @@
         </columns>
       </TableView>
       <Separator layoutX="32.0" layoutY="222.0" prefHeight="0.0" prefWidth="634.0" />
+      <Label fx:id="lblRoomId" alignment="CENTER" layoutX="569.0" layoutY="230.0" prefHeight="29.0" prefWidth="97.0" text="Room" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblQty" alignment="CENTER" layoutX="569.0" layoutY="250.0" prefHeight="29.0" prefWidth="97.0" text="Availability" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
