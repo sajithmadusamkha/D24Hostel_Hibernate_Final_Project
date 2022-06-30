@@ -52,7 +52,12 @@
                   <Font name="Poppins Regular" size="13.0" />
                </font>
             </Label>
-            <JFXButton layoutY="291.0" onAction="#mngUserOnAction" prefHeight="43.0" prefWidth="185.0" style="-fx-border-color: #EEEEEE; -fx-border-width: 0px 0px 2px 0px;" text="Manage User" textFill="WHITE">
+            <JFXButton layoutY="288.0" onAction="#mngUserOnAction" prefHeight="43.0" prefWidth="185.0" style="-fx-border-color: #EEEEEE; -fx-border-width: 0px 0px 2px 0px;" text="Manage User" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutY="347.0" onAction="#btnRemainKeyMny" prefHeight="43.0" prefWidth="185.0" style="-fx-border-color: #EEEEEE; -fx-border-width: 0px 0px 2px 0px;" text="Remain Key Money" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

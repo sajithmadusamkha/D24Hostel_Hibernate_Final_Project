@@ -1,10 +1,12 @@
 package lk.D24_Hostel.hostelSystem.bo.custom;
 
+import javafx.collections.ObservableList;
 import lk.D24_Hostel.hostelSystem.bo.SuperBo;
 import lk.D24_Hostel.hostelSystem.dto.ReservationDTO;
 import lk.D24_Hostel.hostelSystem.dto.RoomDTO;
 import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
 import lk.D24_Hostel.hostelSystem.entity.Student;
+import lk.D24_Hostel.hostelSystem.view.tdm.RemainKeyMoneyTM;
 
 import java.util.List;
 
@@ -24,4 +26,6 @@ public interface ReservationBO extends SuperBo {
     List<StudentDTO> getAllStudents() throws Exception;
 
     List<RoomDTO> getAllRooms() throws Exception;
+
+    ObservableList<RemainKeyMoneyTM> getRemainKeyMoneyStudents() throws Exception;
 }

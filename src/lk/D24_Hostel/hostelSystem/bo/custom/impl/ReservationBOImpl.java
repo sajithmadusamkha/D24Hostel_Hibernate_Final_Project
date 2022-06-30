@@ -1,5 +1,6 @@
 package lk.D24_Hostel.hostelSystem.bo.custom.impl;
 
+import javafx.collections.ObservableList;
 import lk.D24_Hostel.hostelSystem.bo.custom.ReservationBO;
 import lk.D24_Hostel.hostelSystem.dao.DAOFactory;
 import lk.D24_Hostel.hostelSystem.dao.custom.ReservationDAO;
@@ -11,6 +12,7 @@ import lk.D24_Hostel.hostelSystem.dto.StudentDTO;
 import lk.D24_Hostel.hostelSystem.entity.Reservation;
 import lk.D24_Hostel.hostelSystem.entity.Room;
 import lk.D24_Hostel.hostelSystem.entity.Student;
+import lk.D24_Hostel.hostelSystem.view.tdm.RemainKeyMoneyTM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,5 +84,10 @@ public class ReservationBOImpl implements ReservationBO {
             allRooms.add(new RoomDTO(r.getRoom_type_id(),r.getType(),r.getKey_money(),r.getRoom_qty()));
         }
         return allRooms;
+    }
+
+    @Override
+    public ObservableList<RemainKeyMoneyTM> getRemainKeyMoneyStudents() throws Exception {
+        return reservationDAO.getRemainKeyMoneyStudents();
     }
 }

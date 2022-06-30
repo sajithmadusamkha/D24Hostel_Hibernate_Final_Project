@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class RemainKeyMoneyTM {
     private String student_Id;
     private String name;
-    private String address;
+    private String status;
 }
