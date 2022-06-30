@@ -72,14 +72,18 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User LoginValidation(String useName, String password) throws Exception {
+    public User LoginValidation(String useName) throws Exception {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        String find = "FROM User WHERE user_name = :userName AND password = :pwd";
+        String find = "FROM User WHERE user_name = :userName";
         Query query = session.createQuery(find);
         query.setParameter("userName",useName);
-        query.setParameter("pwd",password);
+        List<User> users = query.list();
+
+        for(User u : users){
+            return new User(u.getUser_id(),u.getUser_name(),u.getPassword());
+        }
 
         transaction.commit();
         session.close();

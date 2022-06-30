@@ -14,5 +14,5 @@ public interface UserBO extends SuperBo {
 
     List<UserDTO> getAllUsers() throws Exception;
 
-    UserDTO loginValidation(String userName, String password) throws Exception;
+    UserDTO loginValidation(String userName) throws Exception;
 }
