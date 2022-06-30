@@ -38,6 +38,11 @@ public class DashBoardFormController {
         loadUi("ManageUserForm");
     }
 
+
+    public void btnRemainKeyMny(ActionEvent actionEvent) throws IOException {
+        loadUi("RemainKeyMoneyForm");
+    }
+
     public void logOut(MouseEvent mouseEvent) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("/lk/D24_Hostel/hostelSystem/view/MainForm.fxml"));
         Scene subScene = new Scene(parent);
