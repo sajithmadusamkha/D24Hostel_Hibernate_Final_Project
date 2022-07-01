@@ -19,8 +19,10 @@
          </font>
       </Label>
       <Separator layoutX="18.0" layoutY="55.0" prefHeight="0.0" prefWidth="447.0" />
-      <JFXTextField fx:id="txtUserName" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="220.0" prefHeight="37.0" prefWidth="447.0" promptText="User Name" unFocusColor="WHITE" />
-      <JFXPasswordField fx:id="txtPwd" focusColor="WHITE" labelFloat="true" layoutX="20.0" layoutY="311.0" prefHeight="37.0" prefWidth="447.0" promptText="Password" unFocusColor="WHITE" />
+      <AnchorPane layoutX="11.0" layoutY="222.0" prefHeight="37.0" prefWidth="456.0" style="-fx-background-color: #EEEEEE; -fx-background-radius: 4px 4px 4px 4px;" />
+      <AnchorPane layoutX="11.0" layoutY="313.0" prefHeight="37.0" prefWidth="456.0" style="-fx-background-color: #EEEEEE; -fx-background-radius: 4px 4px 4px 4px;" />
+      <JFXTextField fx:id="txtUserName" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="220.0" prefHeight="37.0" prefWidth="439.0" promptText="User Name" unFocusColor="WHITE" />
+      <JFXPasswordField fx:id="txtPwd" focusColor="WHITE" labelFloat="true" layoutX="20.0" layoutY="311.0" prefHeight="37.0" prefWidth="439.0" promptText="Password" unFocusColor="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="171.0" layoutY="405.0" onAction="#loginOnAction" prefHeight="37.0" prefWidth="145.0" style="-fx-background-color: #00ADB5;" text="Log In" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="16.0" />
@@ -31,11 +33,11 @@
             <Image url="@images/permission.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="txtShowPassword" focusColor="WHITE" labelFloat="true" layoutX="20.0" layoutY="311.0" prefHeight="37.0" prefWidth="447.0" unFocusColor="WHITE" visible="false" />
       <JFXCheckBox fx:id="showPassword" layoutX="346.0" layoutY="362.0" onAction="#changeVisibility_OnAction" text="Show Password" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="12.0" />
          </font>
       </JFXCheckBox>
+      <JFXTextField fx:id="txtShowPassword" focusColor="WHITE" labelFloat="true" layoutX="20.0" layoutY="311.0" prefHeight="37.0" prefWidth="447.0" unFocusColor="WHITE" visible="false" />
    </children>
 </AnchorPane>
